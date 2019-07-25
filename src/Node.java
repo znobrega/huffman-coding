@@ -1,12 +1,13 @@
 class Node {
-  int weight;
-  Node parent;
-  Node left;
-  Node right;
+  private int weight;
+  private Node parent;
+  private Node left;
+  private Node right;
+  private char character;
 
   // True = Right
   // False = Left
-  boolean isRightOrLeft;
+  private boolean isRightOrLeft;
 
 
   public Node(int weight) {
@@ -16,6 +17,16 @@ class Node {
     this.right = null;
     this.isRightOrLeft = true;
   }
+
+  public Node(int weight, char character) {
+    this.weight = weight;
+    this.parent = null; 
+    this.left = null;
+    this.right = null;
+    this.isRightOrLeft = true;
+    this.character = character;
+  }
+
 
   public int getWeight() {
     return this.weight;
@@ -41,5 +52,29 @@ class Node {
     } else {
       this.isRightOrLeft = false;
     }
+  }
+
+  public boolean hasLeft() {
+    return this.left != null;
+  }
+
+    public boolean hasRight() {
+    return this.right != null;
+  }
+
+  public Node getLeft() {
+    return this.left;
+  }
+
+  public Node getRight() {
+    return this.right;
+  }
+
+  public boolean isLeaf() {
+    return this.right == null &&  this.left == null;
+  }
+
+  public char getChar() {
+    return this.character;
   }
 }

@@ -7,21 +7,19 @@ class Main {
     System.out.println("Hello world!");
 
     Heapmin Queue = new Heapmin();
-    ReadFile file = new ReadFile("./files/generated.fib25");
+    ReadFile file = new ReadFile("./files/generated.equal");
     int[] freqs = file.getFreqs();
-    
-    // int j = 0;
-    // while(j < freqs.length) {
-    //   System.out.print(freqs[j] + ", ");
-    //   j++;
-    // }
 
     for(int i =0; i< freqs.length; i++) {
       if(freqs[i] > 0) {
-        Queue.add(new Node(freqs[i]));
+        char ch = (char) i;
+        Queue.add(new Node(freqs[i], ch));
       }
     }
     Huffman huffman = new Huffman(Queue);
-    Queue.showElements();
+    huffman.buildTree();
+    huffman.printPath(huffman.getRoot(), "");
+
+    //Queue.showElements();
   }
 }

@@ -1,9 +1,12 @@
 public class Huffman {
-  Heapmin Queue;
+  private Heapmin Queue;
+  private Node root;
 
   public Huffman(Heapmin Queue) {
     this.Queue = Queue;
+    this.root = null;
   }
+
 
   public void buildTree() {
     int counter = 256;
@@ -20,7 +23,27 @@ public class Huffman {
       this.Queue.add(newNode);
     }
 
-    Node lastNode = this.Queue.extractMin();
-    System.out.println(lastNode.getWeight());
+    Node root = this.Queue.extractMin();
+    this.root = root;
+  }
+
+  public void printPath(Node node, String code) {
+    if(node.hasLeft()) {
+      code+="0";
+      printPath(node.getLeft(), code);
+    }
+    
+    if(node.hasRight()) {
+      code+="1";
+      printPath(node.getRight(), code);
+    }
+
+    if(node.isLeaf()) {
+      System.out.println("Caracter: " + node.getChar() +" " + "Code: " +code);
+    }
+  }
+
+  public Node getRoot() {
+    return this.root;
   }
 }

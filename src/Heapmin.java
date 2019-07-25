@@ -1,8 +1,8 @@
 import java.util.*;  
 
 class Heapmin {
-  ArrayList<Node> allNodes;
-  int size;
+  private ArrayList<Node> allNodes;
+  private int size;
 
   public Heapmin() {
     this.allNodes = new ArrayList<Node>();
@@ -16,7 +16,7 @@ class Heapmin {
   }
 
   public int getLeftChild(int i) {
-    return i == 0 ? 2 : 2*1+1; 
+    return i == 0 ? 1 : 2*i+1; 
   }
 
   public int getRightChild(int i) {
@@ -26,7 +26,7 @@ class Heapmin {
   public void minHeapify(int i) {
     int left = getLeftChild(i);
     int right = getRightChild(i);
-    int smallest;
+    int smallest = i;
 
     if (this.size > left && this.allNodes.get(left).getWeight() < this.allNodes.get(i).getWeight()) {
       smallest = left;
@@ -38,7 +38,7 @@ class Heapmin {
       smallest = right;
     }
 
-    if( smallest != i) {
+    if(smallest != i) {
       Collections.swap(allNodes, i, smallest);
       minHeapify(smallest);
     }
@@ -48,12 +48,10 @@ class Heapmin {
     if (this.size < 1) {
       throw new IllegalArgumentException("Heap underflow");
     }
-
     Node min = this.allNodes.get(0);
-    Collections.swap(allNodes, 0, this.size-1);
+    Collections.swap(this.allNodes, 0, this.size-1);
     this.allNodes.remove(this.size -1);
     this.size--;
-
     this.minHeapify(0);
 
     return min;

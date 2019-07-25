@@ -2,9 +2,10 @@ import java.io.*;
 
 public class ReadFile {
   
-  String fileName;
-  int[] freqs;
-  InputStream file;
+  private String fileName;
+  private int[] freqs;
+  private InputStream file;
+  
   public ReadFile(String fileName) {
     this.fileName = fileName;
     this.freqs = new int[256];
