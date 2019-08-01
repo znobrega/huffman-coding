@@ -13,7 +13,7 @@ class Main {
     for(int i =0; i< freqs.length; i++) {
       if(freqs[i] > 0) {
         char ch = (char) i;
-        Queue.add(new Node(freqs[i], ch));
+        Queue.add(new Node(freqs[i], ch, i));
       }
     }
     Huffman huffman = new Huffman(Queue);

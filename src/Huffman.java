@@ -1,12 +1,18 @@
 public class Huffman {
   private Heapmin Queue;
   private Node root;
+  private ByteInfo[] byteInfos;
+
 
   public Huffman(Heapmin Queue) {
     this.Queue = Queue;
     this.root = null;
+    this.byteInfos = new ByteInfo[256];
   }
 
+  public Node getRoot() {
+    return this.root;
+  }
 
   public void buildTree() {
     int counter = 256;
@@ -27,23 +33,20 @@ public class Huffman {
     this.root = root;
   }
 
-  public void printPath(Node node, String code) {
+  public void printPath(Node node, String huffmanCode) {
     if(node.hasLeft()) {
-      code+="0";
-      printPath(node.getLeft(), code);
+      huffmanCode+="0";
+      printPath(node.getLeft(), huffmanCode);
     }
     
     if(node.hasRight()) {
-      code+="1";
-      printPath(node.getRight(), code);
+      huffmanCode+="1";
+      printPath(node.getRight(), huffmanCode);
     }
 
     if(node.isLeaf()) {
-      System.out.println("Caracter: " + node.getChar() +" " + "Code: " +code);
+      System.out.println("Caracter: " + node.getChar() +" " + "Code: " +huffmanCode);
+      byteInfos[node.getInitCode()] = new ByteInfo(node.getInitCode(), node.getChar(), huffmanCode);
     }
-  }
-
-  public Node getRoot() {
-    return this.root;
   }
 }

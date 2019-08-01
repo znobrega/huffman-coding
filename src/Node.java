@@ -4,6 +4,7 @@ class Node {
   private Node left;
   private Node right;
   private char character;
+  private int initCode;
 
   // True = Right
   // False = Left
@@ -18,13 +19,14 @@ class Node {
     this.isRightOrLeft = true;
   }
 
-  public Node(int weight, char character) {
+  public Node(int weight, char character, int initCode) {
     this.weight = weight;
     this.parent = null; 
     this.left = null;
     this.right = null;
     this.isRightOrLeft = true;
     this.character = character;
+    this.initCode = initCode;
   }
 
 
@@ -76,5 +78,9 @@ class Node {
 
   public char getChar() {
     return this.character;
+  }
+
+  public int getInitCode() {
+    return this.initCode;
   }
 }

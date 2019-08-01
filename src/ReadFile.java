@@ -36,6 +36,22 @@ public class ReadFile {
     // }
   }
 
+  public void createCodeFile() {
+    int num;
+    try {
+      file = new FileInputStream(this.fileName);
+      while((num = file.read()) != -1) {
+
+        FileOutputStream outputStream = new FileOutputStream("equalHuffman.txt");
+        outputStream.write(ByteInfo[num].getHuffmanCode());
+        outputStream.close();
+        
+      }
+    } catch(Exception err) {
+
+    }
+  }
+
   public int[] getFreqs() {
     return this.freqs;
   }
