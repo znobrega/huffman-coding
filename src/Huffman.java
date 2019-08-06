@@ -2,12 +2,14 @@ public class Huffman {
   private Heapmin Queue;
   private Node root;
   private ByteInfo[] byteInfos;
+  private InputStream file;
 
 
   public Huffman(Heapmin Queue) {
     this.Queue = Queue;
     this.root = null;
     this.byteInfos = new ByteInfo[256];
+    this.InputStream = null;
   }
 
   public Node getRoot() {
@@ -45,8 +47,25 @@ public class Huffman {
     }
 
     if(node.isLeaf()) {
-      System.out.println("Caracter: " + node.getChar() +" " + "Code: " +huffmanCode);
-      byteInfos[node.getInitCode()] = new ByteInfo(node.getInitCode(), node.getChar(), huffmanCode);
+      byteInfos[node.getInitCode()] = new ByteInfo(node.getInitCode(), node.getChar(), Integer.parseInt(huffmanCode));
+    }
+  }
+
+  public void createCodeFile() {
+    int num;
+    try {
+      file = new FileInputStream(this.fileName);
+      FileOutputStream outputStream = new FileOutputStream("equalHuffman.equal");
+      
+      // Ler o arquivo novamente
+      // Para cada byte, escreve um novo byte em outro arquivo
+      // 
+      while((num = file.read()) != -1) {
+        outputStream.write(ByteInfo[num].getHuffmanCode());
+      }
+        outputStream.close();
+    } catch(Exception err) {
+
     }
   }
 }

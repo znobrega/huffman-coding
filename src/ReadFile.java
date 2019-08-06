@@ -30,30 +30,9 @@ public class ReadFile {
     } catch(Exception err) {
 
     } 
-    
-    // for(int i = 0; i < 256; i++) {
-    //   System.out.print(freqs[i] + ", ");
-    // }
-  }
-
-  public void createCodeFile() {
-    int num;
-    try {
-      file = new FileInputStream(this.fileName);
-      while((num = file.read()) != -1) {
-
-        FileOutputStream outputStream = new FileOutputStream("equalHuffman.txt");
-        outputStream.write(ByteInfo[num].getHuffmanCode());
-        outputStream.close();
-        
-      }
-    } catch(Exception err) {
-
-    }
   }
 
   public int[] getFreqs() {
     return this.freqs;
   }
-
 }
