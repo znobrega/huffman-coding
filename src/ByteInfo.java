@@ -1,10 +1,10 @@
-class byteInfo {
+class ByteInfo {
   private int initCode;
-  private char initChar
+  private char initChar;
   private int huffmanCode;
 
 
-  public ByteInfo(int initCode, char initChar, int huffmanCode) {
+  public ByteInfo(int initCode, char initChar, int huffmanCode){
     this.initCode = initCode;
     this.initChar = initChar;
     this.huffmanCode = huffmanCode;
@@ -32,7 +32,7 @@ class byteInfo {
     this.initCode = initCode;
   }
 
-  public void setInitChar(int initChar) {
+  public void setInitChar(char initChar) {
     this.initChar = initChar;
   }
 

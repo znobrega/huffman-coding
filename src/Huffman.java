@@ -1,3 +1,8 @@
+
+import java.io.FileInputStream;
+import java.io.*;
+import java.util.*;
+
 public class Huffman {
   private Heapmin Queue;
   private Node root;
@@ -9,7 +14,7 @@ public class Huffman {
     this.Queue = Queue;
     this.root = null;
     this.byteInfos = new ByteInfo[256];
-    this.InputStream = null;
+    this.file = null;
   }
 
   public Node getRoot() {
@@ -53,15 +58,16 @@ public class Huffman {
 
   public void createCodeFile() {
     int num;
+    String fileName = "test";
     try {
-      file = new FileInputStream(this.fileName);
+      file = new FileInputStream(fileName);
       FileOutputStream outputStream = new FileOutputStream("equalHuffman.equal");
       
       // Ler o arquivo novamente
       // Para cada byte, escreve um novo byte em outro arquivo
       // 
       while((num = file.read()) != -1) {
-        outputStream.write(ByteInfo[num].getHuffmanCode());
+       // outputStream.write(ByteInfo[num].getHuffmanCode());
       }
         outputStream.close();
     } catch(Exception err) {

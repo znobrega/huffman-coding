@@ -5,7 +5,7 @@ import java.util.*;
 class Main {
   public static void main(String[] args) {
     System.out.println("Hello world!");
-
+    
     Heapmin Queue = new Heapmin();
     ReadFile file = new ReadFile("./files/generated.equal");
     int[] freqs = file.getFreqs();
@@ -19,7 +19,5 @@ class Main {
     Huffman huffman = new Huffman(Queue);
     huffman.buildTree();
     huffman.printPath(huffman.getRoot(), "");
-
-    //Queue.showElements();
   }
 }
