@@ -1,26 +1,28 @@
 class ByteInfo {
   private int initCode;
   private char initChar;
-  private int huffmanCode;
+  private String huffmanCode;
+  private int huffmanCodeInt;
 
 
-  public ByteInfo(int initCode, char initChar, int huffmanCode){
+  public ByteInfo(int initCode, char initChar, String huffmanCode){
     this.initCode = initCode;
     this.initChar = initChar;
     this.huffmanCode = huffmanCode;
+    this.huffmanCodeInt = castCodeToInt(huffmanCode);
   }
 
   public ByteInfo(int initCode, char initChar) {
     this.initCode = initCode;
     this.initChar = initChar;
-    this.huffmanCode = -1;
+    this.huffmanCode = "";
   }
 
   public int getInitCode() {
     return this.initCode;
   }
 
-  public int huffmanCode() {
+  public String getHuffmanCode() {
     return this.huffmanCode;
   }
   
@@ -36,7 +38,18 @@ class ByteInfo {
     this.initChar = initChar;
   }
 
-  public void setHuffmanCode(int huffmanCode) {
+  public void setHuffmanCode(String huffmanCode) {
     this.huffmanCode = huffmanCode;
   }  
+
+  public int castCodeToInt(String code) {
+    int intValue = 0;
+    
+    for (int i = code.length() -1, j = 0; i >= 0; i--, j++) {
+      int individual = Integer.parseInt(code.split("")[i]);
+      intValue += individual << j;
+    }
+
+    return intValue;
+  }
 }

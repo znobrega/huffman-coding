@@ -34,7 +34,7 @@ class Heapmin {
       smallest = i;
     }
 
-    if(this.size > right && this.allNodes.get(right).getWeight() < this.allNodes.get(i).getWeight()) {
+    if(this.size > right && this.allNodes.get(right).getWeight() < this.allNodes.get(smallest).getWeight()) {
       smallest = right;
     }
 

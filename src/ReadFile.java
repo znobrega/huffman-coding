@@ -19,7 +19,7 @@ public class ReadFile {
       freqs[i] = 0;
     }
   }
-  
+
   public void countBytes() {
     int num;
     try {

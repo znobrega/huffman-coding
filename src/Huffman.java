@@ -25,35 +25,53 @@ public class Huffman {
     int counter = 256;
     while(this.Queue.getSize() > 1) {
       Node n1 = this.Queue.extractMin();
+      // System.out.println("Extracaão primeiro:");
+      // Queue.showElements();
+      // System.out.println("Extracaão segundo:");
+      // Queue.showElements();
+
       Node n2 = this.Queue.extractMin();
 
       Node newNode = new Node(n1.getWeight() + n2.getWeight());
+      
+ 
+      
       newNode.setLeft(n1);
       n1.setRightOrLeft("left");
+
       newNode.setRight(n2);
       n2.setRightOrLeft("right");
 
       this.Queue.add(newNode);
     }
+    // Até aqui não tem erro
 
     Node root = this.Queue.extractMin();
+    System.out.println("Tamanh:" + root.getWeight());
     this.root = root;
   }
 
   public void printPath(Node node, String huffmanCode) {
-    if(node.hasLeft()) {
-      huffmanCode+="0";
-      printPath(node.getLeft(), huffmanCode);
-    }
-    
-    if(node.hasRight()) {
-      huffmanCode+="1";
-      printPath(node.getRight(), huffmanCode);
-    }
+        if(node == null){
+            return;
+        }  
 
-    if(node.isLeaf()) {
-      byteInfos[node.getInitCode()] = new ByteInfo(node.getInitCode(), node.getChar(), Integer.parseInt(huffmanCode));
-    }
+
+      if(node.hasLeft()) {
+        String nextHuffmanCode = huffmanCode + "0";
+        printPath(node.getLeft(), nextHuffmanCode);
+      }
+      
+      if(node.hasRight()) {
+        String nextHuffmanCode = huffmanCode + "1";
+        printPath(node.getRight(), nextHuffmanCode);
+      }
+
+      if(node.isLeaf()) {
+        System.out.println(huffmanCode + " " + huffmanCode.length());
+        // byteInfos[node.getInitCode()] = new ByteInfo(node.getInitCode(), node.getChar(), huffmanCode);
+      }
+
   }
 
   public void createCodeFile() {
