@@ -1,4 +1,4 @@
-class ByteInfo {
+public class ByteInfo {
   private int initCode;
   private char initChar;
   private String huffmanCode;
@@ -41,6 +41,10 @@ class ByteInfo {
   public void setHuffmanCode(String huffmanCode) {
     this.huffmanCode = huffmanCode;
   }  
+  
+  public void addZeroHuffmanCode() {
+      this.huffmanCode = "0" + this.huffmanCode;
+  }
 
   public int castCodeToInt(String code) {
     int intValue = 0;

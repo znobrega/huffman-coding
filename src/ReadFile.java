@@ -1,7 +1,6 @@
 import java.io.*;
 
 public class ReadFile {
-  
   private String fileName;
   private int[] freqs;
   private InputStream file;
@@ -12,11 +11,21 @@ public class ReadFile {
     this.file = null;
     initArray();
     countBytes();
+    //testWithString();
   }
 
   public void initArray() {
     for(int i = 0; i < freqs.length; i++) {
       freqs[i] = 0;
+    }
+  }
+
+  public void testWithString() {
+    String test = "abcdefghijklmnopqrsuvwxyz";
+
+    for (int i = 0; i < test.length(); i++) {
+      int unsignedByte = test.charAt(i) & 0xFF;
+      freqs[unsignedByte]++;
     }
   }
 

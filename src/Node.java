@@ -48,19 +48,15 @@ class Node {
     node.setParent(this);
   }
 
-  public void setRightOrLeft(String value) {
-    if(value.trim().contains("right")) {
-      this.isRightOrLeft = true;
-    } else {
-      this.isRightOrLeft = false;
-    }
+  public void setRightOrLeft(boolean value) {
+      this.isRightOrLeft = value;
   }
 
   public boolean hasLeft() {
     return this.left != null;
   }
 
-    public boolean hasRight() {
+  public boolean hasRight() {
     return this.right != null;
   }
 
@@ -72,8 +68,12 @@ class Node {
     return this.right;
   }
 
-  public boolean isLeaf() {
-    return this.right == null &&  this.left == null;
+  public boolean isLeaf(Node node) {
+    if (this.right == null && this.left == null) {
+      return true;
+    }
+
+    return false;
   }
 
   public char getChar() {
